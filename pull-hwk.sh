@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDENT_REPOS=~/teaching/CSCI-3300/student-repos/
+STUDENT_REPOS=~/teaching/PL/student-repos/
 
 # Main loop.
 for i in $(ls $STUDENT_REPOS)

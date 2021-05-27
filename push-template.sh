@@ -3,7 +3,7 @@ TEMPLATE=~/teaching/PL/student-repo-template
 STUDENT_REPOS=~/teaching/PL/student-repos
 
 # Main loop.
-for i in $(ls $TEMPLATE)
+for i in $(ls $STUDENT_REPOS)
 do
     # A [s]tudent [r]epo.
     SR=${STUDENT_REPOS}/$i

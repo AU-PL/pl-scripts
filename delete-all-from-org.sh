@@ -1,0 +1,1 @@
+curl -s -H "Authorization: token $GITHUB_AT" https://api.github.com/orgs/AU-PL/repos | jq '.[].full_name' | tr -d '\r' | grep -v 'AU-PL/lectures' | grep -v 'AU-PL/website' | grep -v 'AU-PL/hwk-template' | grep -v 'AU-PL/pl-scripts' | xargs -I '{}' curl -s -H "Authorization: token $GITHUB_AT" -XDELETE https://api.github.com/repos/'{}'

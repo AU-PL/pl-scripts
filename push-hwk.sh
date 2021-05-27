@@ -1,7 +1,7 @@
 #!/bin/bash
-SEMESTER="Fall-2019"
-HWKORIG=~/teaching/CSCI-3300/staff/hwk/$SEMESTER/$1/student
-STUDENT_REPOS=~/teaching/CSCI-3300/student-repos/
+SEMESTER="Spring/2021"
+HWKORIG=~/teaching/PL/hwk/$SEMESTER/$1/student
+STUDENT_REPOS=~/teaching/PL/student-repos/
 
 if [ -z "$1" ]; then
     echo "The first argument to this script is the homework number."
@@ -20,10 +20,10 @@ do
     fi
 
     # If the homework is already in the students repo. move on.
-    # if [ -d "${SR}/hwk/$1" ]; then
-    #     echo "Homework $1 already exists in $SR"
-    #     continue
-    # fi
+    if [ -d "${SR}/hwk/$1" ]; then
+        echo "Homework $1 already exists in $SR"
+        continue
+    fi
     
     # At this point the homework is ready to be copied.
     mkdir -p ${SR}/hwk/$1
@@ -33,6 +33,7 @@ do
     cd $SR
     git add hwk/$1/*
     git commit -a -m "Added homework $1."
-    git pull --no-edit
+    git fetch
+    git rebase
     git push
 done

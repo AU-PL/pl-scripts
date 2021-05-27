@@ -4,7 +4,7 @@ IFS=','
 csvfile=$1
 
 repo_dir=/Users/heades/teaching/PL/student-repos
-template_repo=/Users/heades/teaching/PL/student-repo-template
+template_repo=/Users/heades/teaching/PL/template-repo
 
 # Check to make sure the file exists:
 [ ! -f $csvfile ] && { echo "$csvfile file not found"; exit 99; }
@@ -22,7 +22,7 @@ function setup_repo() {
     readonly sid=${1:?"Student id must be specified."}
     readonly repo=$repo_dir/$sid
     [ ! -d $repo ] && { echo "$repo not found."; exit 99; }    
-    readonly git_origin="git@github.com:CSCI3300-PL-Concepts"
+    readonly git_origin="git@github.com:AU-PL"
 
     # Enter the repo:
     cd $repo
@@ -64,7 +64,7 @@ function create_repo_github() {
     readonly sid=${1:?"Student id must be specified."}
     readonly name=${2:?"Student name must be specified."}
     
-    org_url="https://api.github.com/orgs/CSCI3300-PL-Concepts/repos"    
+    org_url="https://api.github.com/orgs/AU-PL/repos"    
 
     read -r -d '' data <<EOF 
 {
