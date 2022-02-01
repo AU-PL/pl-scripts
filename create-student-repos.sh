@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/bin/zsh
 
 IFS=','
 csvfile=$1
@@ -74,7 +74,8 @@ function create_repo_github() {
   "private": "true"
 }
 EOF
-    curl --request POST $org_url -H "Authorization: token $GITHUB_AT" -d $data
+    echo "curl -X POST -H \"Authorization: token $GITHUB_AT\" $org_url --data $data"
+    curl -X POST -H "Authorization: token $GITHUB_AT" $org_url --data $data 
 }
 
 function push_repo() {
