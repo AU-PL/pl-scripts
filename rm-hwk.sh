@@ -22,7 +22,6 @@ do
 
     if [ -d "${SR}/hwk/$1" ]; then
         rm -rf ${SR}/hwk/$1
-        # Commit the homework to Git.
         cd $SR
         git add hwk/.
         git commit -a -m "Removing homework $1."
