@@ -16,24 +16,18 @@ do
     
     # Check to see if any homework has been added to the current SR.
     if [ ! -d "${SR}/hwk" ]; then
-        mkdir -p ${SR}/hwk    
+        echo "No homework to remove."
+        exit 0;
     fi
 
-    # If the homework is already in the students repo. move on.
     if [ -d "${SR}/hwk/$1" ]; then
-        echo "Homework $1 already exists in $SR"
-        continue
+        rm -rf ${SR}/hwk/$1
+        # Commit the homework to Git.
+        cd $SR
+        git add hwk/.
+        git commit -a -m "Removing homework $1."
+        git fetch
+        git rebase
+        git push  
     fi
-    
-    # At this point the homework is ready to be copied.
-    mkdir -p ${SR}/hwk/$1
-    cp -vR $HWKORIG/* ${SR}/hwk/$1
-    
-    # Commit the homework to Git.
-    cd $SR
-    git add hwk/$1/*
-    git commit -a -m "Added homework $1."
-    git fetch
-    git rebase
-    git push
 done
