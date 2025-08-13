@@ -3,8 +3,8 @@
 IFS=','
 csvfile=$1
 
-repo_dir=/Users/heades/teaching/PL/student-repos
-template_repo=/Users/heades/teaching/PL/template-repo
+repo_dir=/Users/heades/work/teaching/PL/student-repos
+template_repo=/Users/heades/work/teaching/PL/template-repo
 
 # Check to make sure the file exists:
 [ ! -f $csvfile ] && { echo "$csvfile file not found"; exit 99; }
