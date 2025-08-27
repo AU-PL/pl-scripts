@@ -16,17 +16,18 @@ do
     
     # Check to see if any homework has been added to the current SR.
     if [ ! -d "${SR}/hwk" ]; then
-        mkdir -p ${SR}/hwk    
+        echo "The hwk directory is missing in $SR"
+        continue
     fi
     
     # If the homework is already in the students repo. move on.
     if [ -d "${SR}/hwk/$1" ]; then
-        echo "Homework $1 already exists in $SR"
+        echo "Updating Homework $1 in $SR"        
+    else 
+        echo "The directory hwk/$1 is missing $SR."
         continue
     fi
-
-    # At this point the homework is ready to be copied.
-    mkdir -p ${SR}/hwk/$1    
+    # Copy the contents (this will update existing files):
     cp -vR $HWKORIG/* ${SR}/hwk/$1
 
     # Commit the homework to Git.
