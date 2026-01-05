@@ -1,4 +1,0 @@
-(executable
- (public_name hwk2)
- (name main)
- (libraries hwk2))
