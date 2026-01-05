@@ -1,3 +1,5 @@
+# Used to build website.
+# See PL/website/Makefile.
 git add -A
 if git diff-index --quiet HEAD; [[ "$?"  -eq 1 ]]
 then

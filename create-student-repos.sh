@@ -39,7 +39,7 @@ function create_readme() {
     readonly repo=$repo_dir/$sid
     [ ! -d $repo ] && { echo "$repo not found."; exit 99; }    
 
-    contents="# $name's Private Repo\n\nAll assignments will be turned in through this repo. In addition, all feedback will be given back to you through this repo.\n\nHomework will appear in a directory called hwk, but this will only appear after the first homework is released."
+    contents="# $name's Private Repo\n\nAll assignments will be turned in through this repo. In addition, all feedback will be given back to you through this repo.\n\nHomework will appear in the directory called \`hwk\`."
     
     readme_path="$repo/README.md"
     echo $contents > $readme_path
@@ -54,7 +54,7 @@ function copy_template_repo() {
     [ ! -d $repo ] && { echo "$repo not found."; exit 99; }    
 
     # Add the template repo's files:
-    rsync -rP --exclude="README.md" --exclude="*~" $template_repo/* $repo
+    cp -R $template_repo/* $repo
     cd $repo
     git add .
     git commit -a -m 'Adding the template files.'
@@ -94,9 +94,9 @@ do
     name="$first $last"
     echo "=== Creating $name's repo ==="
     create_repo        $sid       &&
-    setup_repo         $sid       &&
-    create_readme      $sid $name &&
+    setup_repo         $sid       &&    
     copy_template_repo $sid       &&
+    create_readme      $sid $name &&
     create_repo_github $sid $name &&
     push_repo          $sid
     echo "=============================\n\n"
