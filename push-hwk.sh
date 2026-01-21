@@ -1,5 +1,5 @@
 #!/bin/bash
-SEMESTER="Fall/2025"
+SEMESTER="Spring/2026"
 HWKORIG=~/teaching/PL/hwk/$SEMESTER/$1/student
 STUDENT_REPOS=~/teaching/PL/student-repos/
 
